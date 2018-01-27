@@ -8,6 +8,10 @@ endif
 """"""""""""""""""""
 "" COMMON OPTIONS
 """"""""""""""""""""
+
+set rtp^=/usr/share/vim/vimfiles/ " use plugins, syntax definitions, or other addons that are installed for vim
+
+
 " Settings based on :help nvim-defaults, for vim
 set autoindent
 set autoread
