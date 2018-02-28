@@ -35,6 +35,11 @@ Plug 'tomasiser/vim-code-dark'
 " https://github.com/tomasiser/vim-code-dark
 " A dark color scheme heavily inspired by the Dark+ scheme of Visual Studio Code.
 
+" ======== seoul256.vim ========
+Plug 'junegunn/seoul256.vim'
+" A low-contrast Vim color scheme based on Seoul Colors.
+" https://github.com/junegunn/seoul256.vim
+
 " ======== vim-lastplace ========
 Plug 'dietsche/vim-lastplace'
 " Intelligently reopen files at your last edit position.
@@ -108,6 +113,8 @@ Plug 'majutsushi/tagbar'
 " https://github.com/majutsushi/tagbar
 
 Plug 'sophacles/vim-processing'
+
+Plug 'godlygeek/tabular'
 
 " Initialize plugin system
 call plug#end()

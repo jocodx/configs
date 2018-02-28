@@ -34,7 +34,6 @@ set tabpagemax=50
 set tags=./tags;,tags
 set ttyfast
 set viminfo+=!
-set wildmenu
 
 set nocompatible             " not required by neovim
 filetype plugin indent on    " Automatically detect file types.
@@ -99,7 +98,7 @@ set winminheight=0                       " Windows can be 0 line high
 set wildmenu                             " Show list instead of just completing
 set wildmode=list:longest,full           " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]            " Backspace and cursor keys wrap too
-set scrolljump=3                         " Lines to scroll when cursor leaves screen
+"set scrolljump=3                         " Lines to scroll when cursor leaves screen
 set scrolloff=3                          " Minimum lines to keep above and below cursor
 set list                                 " show whitespase defined in listchars
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -147,4 +146,21 @@ noremap k gk
 " Yank to X11 clipboard with xclip program
 vnoremap <C-c> :w !xclip -sel c<CR>:echo "Selection copied to the clipboard."<CR><CR>
 
+" colorschemes
+
 colorscheme codedark
+
+" seoul256 (dark). Works on 256-color terminal or on GVim.
+"   background:
+"   range:   233 (darkest) ~ 239 (lightest)
+"   default: 237
+"let g:seoul256_background = 234
+"colorscheme seoul256
+
+
+""""""""""""""""""""
+" File Type settings
+""""""""""""""""""""
+au BufNewFile,BufRead *.md setlocal spell noet ts=2 sw=2
+au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
