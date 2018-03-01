@@ -112,8 +112,14 @@ Plug 'majutsushi/tagbar'
 " a class outline viewer for vim
 " https://github.com/majutsushi/tagbar
 
-Plug 'sophacles/vim-processing'
+" ======== Surround.vim ========
+" quoting/parenthesizing made simple
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
 
+" ======== Tabular  ========
+" Vim script for text filtering and alignment
+" https://github.com/godlygeek/tabular
 Plug 'godlygeek/tabular'
 
 " Initialize plugin system
