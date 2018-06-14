@@ -81,7 +81,7 @@ Plug 'fatih/vim-go'
 " command, :GoInstallBinaries, which will go get all the required binaries.
 
 " ======== auto-pairs ========
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 " Insert or delete brackets, parens, quotes in pair.
 " https://github.com/jiangmiao/auto-pairs
 "
@@ -117,10 +117,34 @@ Plug 'majutsushi/tagbar'
 " https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
 
-" ======== Tabular  ========
+" ======== Tabular ========
 " Vim script for text filtering and alignment
 " https://github.com/godlygeek/tabular
 Plug 'godlygeek/tabular'
+
+" ======== vim-markdown ========
+" Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
+" https://github.com/plasticboy/vim-markdown
+Plug 'plasticboy/vim-markdown'
+
+" ======== bufexplorer ========
+" quickly and easily switch between buffers
+" https://github.com/jlanzarotta/bufexplorer
+Plug 'jlanzarotta/bufexplorer'
+
+" ======== Ultisnips ========
+" the ultimate solution for snippets in Vim
+" https://github.com/SirVer/ultisnips
+Plug 'SirVer/ultisnips'
+
+" ======== vim-snippets ========
+" Snippets files for various programming languages
+" https://github.com/honza/vim-snippets
+Plug 'honza/vim-snippets'
+
+" ======== goyo.vim ========
+" Distraction-free writing in Vim.
+Plug 'junegunn/goyo.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -131,6 +155,7 @@ call plug#end()
 " ======== The NERDTree ========
 " NerdTree key mapping
 map <C-n> :NERDTreeToggle<CR>
+
 
 " ======== YouCompleteMe ========
 " ensure that the autocomplete window goes away when you’re done with it,
@@ -144,6 +169,7 @@ let g:ycm_key_list_stop_completion = ['<C-y>']
 " This option controls the key mapping used to invoke the completion menu for semantic completion.
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
 
 " ======== airline ========
 " Automatically display all buffers when there's only one tab open
@@ -163,3 +189,28 @@ let g:airline#extensions#tabline#show_tabs = 1
 " ======== Tagbar ========
 " tagbar toggle to F8
 nmap <F8> :TagbarToggle<CR>
+
+
+" ======== vim-go ========
+let g:go_fmt_command = "goimports"
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+set updatetime=100
+let g:go_auto_sameids = 1
+
+
+" ======== Ultisnips ========
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-d>"
+let g:UltiSnipsJumpForwardTrigger="<c-s>"
+let g:UltiSnipsJumpBackwardTrigger="<c-a>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" ======== ctrlp.vim ========
+let g:ctrlp_map = '<c-p>'
+
+
+" ======== goyo.vim ========
+let g:goyo_width = 110
+let g:goyo_height = 100
