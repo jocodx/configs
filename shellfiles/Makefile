@@ -1,11 +1,14 @@
 .PHONY: all zsh bash aliases
 SHELL := /bin/bash
+# Create symlinks for shell configuration files
+
+# zsh and bash configuration files.
 
 all: zsh bash aliases
 
 aliases:
 	# use same aliases in bash and zsh
-	@ln -vsfn aliases ~/.aliases
+	@ln -vsfn $(CURDIR)/aliases $(HOME)/.aliases
 
 zsh: aliases
 	#
@@ -14,20 +17,20 @@ zsh: aliases
 	# (on arch linux grml-zsh-config package provides it)
 	@if grep -q -m1 grml /etc/zsh/zshrc;\
 	then\
-		ln -vsfn /etc/zsh/zshrc ~/.zshrc;\
-	elif [ -f $(CURDIR)/zshr ];\
+		cp -v /etc/zsh/zshrc $(CURDIR)/zshrc;\
+	elif ! grep -q -m1 grml $(CURDIR)/zshrc;\
 	then\
 		curl -L -o $(CURDIR)/zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc;\
 	fi
 	#
 	# Create symlinks for zsh config files
 	@for file in zshrc zshrc.local zshrc.pre zprofile; do\
-		ln -vsfn $$file ~/.$$(basename $$file);\
+		ln -vsfn $(CURDIR)/$$file $(HOME)/.$$(basename $(CURDIR)/$$file);\
 	done
 
 bash: aliases
 	#
 	# Create symlinks for bash config files
 	@for file in bashrc bash_profile; do\
-		ln -vsfn $$file ~/.$$(basename $$file);\
+		ln -vsfn $(CURDIR)/$$file $(HOME)/.$$(basename $(CURDIR)/$$file);\
 	done
