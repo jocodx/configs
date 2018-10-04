@@ -146,6 +146,20 @@ Plug 'honza/vim-snippets'
 " Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
 
+" ======== pgsql.vim ========
+" Vim PostgreSQL syntax plugin.
+Plug 'lifepillar/pgsql.vim'
+
+" ======== rapid-for-vim ========
+" a collection of Vim scripts to help programing ABB industrial robots
+" https://github.com/KnoP-01/rapid-for-vim
+Plug 'KnoP-01/rapid-for-vim'
+
+" ======== vimwiki ========
+" A Personal Wiki For Vim
+" https://github.com/vimwiki/vimwiki
+Plug 'vimwiki/vimwiki'
+
 " Initialize plugin system
 call plug#end()
 
@@ -214,3 +228,23 @@ let g:ctrlp_map = '<c-p>'
 " ======== goyo.vim ========
 let g:goyo_width = 110
 let g:goyo_height = 100
+
+
+" ======== rapid-for-vim ========
+let g:rapidMoveAroundKeyMap=1 " [[, ]], [] and ][ jumps around PROC/FUNC..
+" let g:rapidMoveAroundKeyMap=2 " adds also textobjects af, aF and if
+let g:rapidGoDefinitionKeyMap=1 " gd shows the declaration of curr. word
+let g:rapidListDefKeyMap=1 " <leader>f shows all PROC/FUNC.. in curr. file
+let g:rapidListUsageKeyMap=1 " <leader>u shows all appearance of curr. word
+let g:rapidAutoFormKeyMap=1 " <leader>n inserts a body for a new PROC etc
+let g:rapidConcealStructsKeyMap=1 " <F2>/<F3> to conceal/show struct values
+let g:rapidShowError=1 " shows some syntax errors
+let g:rapidRhsQuickfix=1 " open quickfix window on the right hand side
+let g:qf_window_bottom=0 " if qf.vim exists and you use g:rapidRhsQuickfix
+let g:rapidAutoCorrCfgLineEnd=1 " auto correct \*.cfg line terminator
+" if you use colorscheme tortus use:
+" let g:rapidNoHighLink=1 " even more colors
+
+
+" ======== pgsql.vim ========
+let g:sql_type_default = 'pgsql'

@@ -164,3 +164,4 @@ colorscheme codedark
 au BufNewFile,BufRead *.md setlocal spell noet ts=2 sw=2
 au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
+au BufRead /tmp/psql.edit.* set syntax=sql
