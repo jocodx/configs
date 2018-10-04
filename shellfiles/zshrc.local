@@ -1,0 +1,8 @@
+source ~/.aliases
+
+# create dir and cd into it
+cdmkdir () {
+    mkdir -vp "$1" && cd "$1"
+}
+export TERM="xterm-256color"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
