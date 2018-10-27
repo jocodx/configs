@@ -176,13 +176,15 @@ map <C-n> :NERDTreeToggle<CR>
 let g:ycm_autoclose_preview_window_after_completion=1
 " a shortcut for goto definition
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" key mappings used to select the first completion string (add <Enter>)
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+" key mappings for selecting completion string (add Ctrl-j/k for down/up)
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<S-TAB>']
 " This option controls the key mappings used to close the completion menu.
-let g:ycm_key_list_stop_completion = ['<C-y>']
+let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 " This option controls the key mapping used to invoke the completion menu for semantic completion.
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = '/usr/bin/python'
 
 
 " ======== airline ========
