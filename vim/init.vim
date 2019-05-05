@@ -139,6 +139,9 @@ map <C-k> <C-W>k
 map <C-l> <C-W>l
 map <C-h> <C-W>h
 
+" follow link
+nnoremap <leader>g <C-]>
+
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
 noremap k gk

@@ -182,6 +182,12 @@ call plug#end()
 
 " Plugin specific options
 
+
+" ======== bufexplorer ========
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+let g:bufExplorerSortBy='fullpath'   " Sort by full file path name.
+
+
 " ======== The NERDTree ========
 " NerdTree key mapping
 map <C-n> :NERDTreeToggle<CR>
