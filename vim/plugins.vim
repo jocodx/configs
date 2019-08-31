@@ -176,6 +176,11 @@ Plug 'KnoP-01/rapid-for-vim'
 " https://github.com/vimwiki/vimwiki
 Plug 'vimwiki/vimwiki'
 
+" ======== indentLine ========
+" Visualize indentation levels
+" https://github.com/Yggdroot/indentLine
+Plug 'Yggdroot/indentLine'
+
 " Initialize plugin system
 call plug#end()
 
@@ -183,8 +188,18 @@ call plug#end()
 " Plugin specific options
 
 
+
+" ======== indentLine ========
+" Disable by default:
+let g:indentLine_enabled = 0
+" Character for each indent level
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" Inden character:
+"let g:indentLine_char = 'c'
+
+
 " ======== bufexplorer ========
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
+let g:bufExplorerShowRelativePath=0  " Show relative paths.
 let g:bufExplorerSortBy='fullpath'   " Sort by full file path name.
 
 
@@ -207,6 +222,9 @@ let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_confirm_extra_conf = 1
+" Do not ask confirmation for .ycm_extra_conf.py when it is in these dirs.
+let g:ycm_extra_conf_globlist = ['*/valimo/webapp/*','!~/*']
 
 
 " ======== airline ========
@@ -226,7 +244,10 @@ let g:airline#extensions#tabline#show_tabs = 1
 
 " ======== Tagbar ========
 " tagbar toggle to F8
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarOpen fjc<CR>
+nmap <F9> :TagbarToggle<CR>
+" Sort tags according to their order in source file. Use s key to sort alphabetically.
+let g:tagbar_sort = 0
 
 
 " ======== vim-go ========
@@ -345,3 +366,8 @@ let g:mkdp_page_title = '「${name}」'
 if filereadable($HOME.'/projektit/vimwiki/vimwiki_conf.vim')
     source ~/projektit/vimwiki/vimwiki_conf.vim
 endif
+
+
+" ======== Tabular ========
+" right align first word, don't touch others
+":AddTabularPattern right_first /^\s*\S\+\zs\s\+/r0c0l0
