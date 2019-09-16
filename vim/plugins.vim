@@ -133,16 +133,6 @@ Plug 'godlygeek/tabular'
 " https://github.com/plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown'
 
-" ======== markdown-preview ========
-" Preview markdown on your modern browser with synchronised scrolling and flexible configuration.
-" https://github.com/iamcco/markdown-preview.nvim
-"
-" If you have nodejs and yarn
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-"" If you don't have nodejs and yarn
-" use pre build
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-
 " ======== bufexplorer ========
 " quickly and easily switch between buffers
 " https://github.com/jlanzarotta/bufexplorer
@@ -200,7 +190,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " ======== bufexplorer ========
 let g:bufExplorerShowRelativePath=0  " Show relative paths.
-let g:bufExplorerSortBy='fullpath'   " Sort by full file path name.
+"let g:bufExplorerSortBy='fullpath'   " Sort by full file path name.
 
 
 " ======== The NERDTree ========
@@ -221,10 +211,8 @@ let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 " This option controls the key mapping used to invoke the completion menu for semantic completion.
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_python_binary_path = '/usr/bin/python'
-let g:ycm_confirm_extra_conf = 1
-" Do not ask confirmation for .ycm_extra_conf.py when it is in these dirs.
-let g:ycm_extra_conf_globlist = ['*/valimo/webapp/*','!~/*']
+"let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_confirm_extra_conf = 0
 
 
 " ======== airline ========
@@ -295,69 +283,9 @@ let g:rapidAutoCorrCfgLineEnd=1 " auto correct \*.cfg line terminator
 let g:sql_type_default = 'pgsql'
 
 
-" ======== markdown-preview ========
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = 'chromium'
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-let g:mkdp_auto_close = 0  " default: 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-let g:mkdp_refresh_slow = 0  " default: 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {'openMarker': '```plantuml',
-    \          'closeMarker': '```'},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1
-    \ }
-
-" use a custom markdown style must be absolute path
-let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
-let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
+" ======== vim-markdown ========
+" Allow for the TOC window to auto-fit when it's possible for it to shrink.
+let g:vim_markdown_toc_autofit = 1
 
 
 " ======== vimwiki ========
