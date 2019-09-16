@@ -52,6 +52,11 @@ Plug 'scrooloose/nerdtree'
 " a file system explorer for the Vim editor.
 " https://github.com/scrooloose/nerdtree
 
+" ======== NERD Commenter ========
+Plug 'scrooloose/nerdcommenter'
+" Comment functions so powerful—no comment necessary.
+" https://github.com/scrooloose/nerdcommenter
+
 " ======== YouCompleteMe ========
 Plug 'valloric/youcompleteme'
 " a code-completion engine for vim
