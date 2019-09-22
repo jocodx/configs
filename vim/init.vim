@@ -165,7 +165,18 @@ colorscheme codedark
 " File Type settings
 """"""""""""""""""""
 "au BufNewFile,BufRead *.md setlocal spell noet ts=2 sw=2
-au BufNewFile,BufRead *.md setlocal spell expandtab ts=4 sw=4
-au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
-au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
-au BufRead /tmp/psql.edit.* set syntax=sql
+autocmd Filetype markdown setlocal ts=4 sw=4 expandtab
+"autocmd BufNewFile,BufRead *.md setlocal spell expandtab ts=4 sw=4
+"
+autocmd Filetype yaml setlocal ts=2 sw=2 expandtab
+"autocmd BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
+"
+autocmd Filetype json setlocal ts=2 sw=2 expandtab
+"autocmd BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
+"
+autocmd Filetype htmldjango setlocal ts=2 sw=2 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+"autocmd BufNewFile,BufRead *.html setlocal expandtab ts=2 sw=2
+"
+"Postgresql psql client editing
+autocmd BufRead /tmp/psql.edit.* set syntax=sql

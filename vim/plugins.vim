@@ -166,6 +166,11 @@ Plug 'lifepillar/pgsql.vim'
 " https://github.com/KnoP-01/rapid-for-vim
 Plug 'KnoP-01/rapid-for-vim'
 
+" ======== vim-vue ========
+" Vim syntax highlighting for Vue components.
+" https://github.com/posva/vim-vue
+Plug 'posva/vim-vue'
+
 " ======== vimwiki ========
 " A Personal Wiki For Vim
 " https://github.com/vimwiki/vimwiki
