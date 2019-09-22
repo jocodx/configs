@@ -37,16 +37,16 @@ export KEYTIMEOUT=1
 # Print prompt init time on the first line.
 function zle-line-init {
     OLD_PROMPT=${PS1:0:-3}
-    CLOCK_PROMPT="%F{magenta}$(date +"%H:%M:%S")%f"
-    VIM_PROMPT="i├> "
+    CLOCK_PROMPT="%F{white}$(date +"%H:%M:%S")%f"
+    VIM_PROMPT="i)> "
     PS1="${OLD_PROMPT:0:2}$CLOCK_PROMPT${OLD_PROMPT:10:-1}$VIM_PROMPT"
     zle reset-prompt
 }
 
 # Print command execution time on the second line.
 function zle-line-finish {
-    OLD_PROMPT=${PS1:0:-4}
-    CLOCK_PROMPT="%F{cyan}$(date +"%H:%M:%S")%f├─> "
+    OLD_PROMPT=${PS1:0:-5}
+    CLOCK_PROMPT="─%F{cyan}$(date +"%H:%M:%S")%f> "
     PS1="$OLD_PROMPT$CLOCK_PROMPT"
     zle reset-prompt
 }
@@ -55,11 +55,11 @@ function zle-line-finish {
 function zle-keymap-select {
     OLD_PROMPT=${PS1:0:-4}
     if [ "$KEYMAP" = "vicmd" ]; then
-        VIM_PROMPT="N├> "
+        VIM_PROMPT="N)> "
     elif [ "$KEYMAP" = "main" ]; then
-        VIM_PROMPT="i├> "
+        VIM_PROMPT="i)> "
     else
-        VIM_PROMPT="?├> "
+        VIM_PROMPT="?)> "
     fi
     PS1="$OLD_PROMPT$VIM_PROMPT"
     zle reset-prompt
@@ -79,20 +79,20 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}(git)-[%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+zstyle ':vcs_info:git*' formats "%{${fg[white]}%}(git)-[%{${fg[cyan]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[white]}%}]%{$reset_color%}"
 
 # Detect and report if in python virtual environment
 function virtual_env_prompt () {
     if [ -z $VIRTUAL_ENV ]; then
         REPLY=""
     else
-        REPLY="%F{green}(VENV:%F{magenta}${VIRTUAL_ENV+${VIRTUAL_ENV:t}}%F{green})%f"
+        REPLY="%F{white} (VENV:%F{green}${VIRTUAL_ENV+${VIRTUAL_ENV:t}}%F{white})%f"
     fi
 }
 
 grml_theme_add_token virtual-env -f virtual_env_prompt
 grml_theme_add_token vi_mode "[i] "
-grml_theme_add_token left-arrow-upper-part '┌─00:00:00┤ '
-grml_theme_add_token left-arrow-lower-part '└┤i├> '
+grml_theme_add_token left-arrow-upper-part '┌─00:00:00─'
+grml_theme_add_token left-arrow-lower-part '└(i)> '
 
 zstyle ':prompt:grml:left:setup' items left-arrow-upper-part rc user at host change-root path vcs virtual-env newline left-arrow-lower-part

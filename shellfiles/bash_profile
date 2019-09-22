@@ -1,5 +1,7 @@
 #
 # ~/.bash_profile
 #
-PATH=$PATH:~/bin
+# User scripts and binaries under home
+PATH=~/bin:$PATH
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
