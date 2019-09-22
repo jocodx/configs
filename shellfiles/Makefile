@@ -4,11 +4,17 @@ SHELL := /bin/bash
 
 # zsh and bash configuration files.
 
-all: zsh bash aliases
+all: zsh bash aliases readline
 
 aliases:
-	# use same aliases in bash and zsh
+	# Use same aliases in bash and zsh.
 	@ln -vsfn $(CURDIR)/aliases $(HOME)/.aliases
+
+readline:
+	# Create symlink for readline config file.
+	@for file in inputrc; do\
+		ln -vsfn $(CURDIR)/$$file $(HOME)/.$$(basename $(CURDIR)/$$file);\
+	done
 
 zsh: aliases
 	#
@@ -23,7 +29,7 @@ zsh: aliases
 		curl -L -o $(CURDIR)/zshrc https://git.grml.org/f/grml-etc-core/etc/zsh/zshrc;\
 	fi
 	#
-	# Create symlinks for zsh config files
+	# Create symlinks for zsh config files.
 	@for file in zshrc zshrc.local zshrc.pre zprofile; do\
 		ln -vsfn $(CURDIR)/$$file $(HOME)/.$$(basename $(CURDIR)/$$file);\
 	done
