@@ -6,3 +6,93 @@ cdmkdir () {
 }
 export TERM="xterm-256color"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export EDITOR=vim
+
+# some things from here: https://dougblack.io/words/zsh-vi-mode.html
+
+# Vi mode
+bindkey -v
+
+# Make ctrl-p and ctrl-n history search behave like arrow keys.
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
+# backspace and ^h working even after
+# # returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w remove word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+
+# mode change delay to 0.1s
+export KEYTIMEOUT=1
+
+
+# zle widget functions for updating prompt.
+
+# Print prompt init time on the first line.
+function zle-line-init {
+    OLD_PROMPT=${PS1:0:-3}
+    CLOCK_PROMPT="%F{magenta}$(date +"%H:%M:%S")%f"
+    VIM_PROMPT="i├> "
+    PS1="${OLD_PROMPT:0:2}$CLOCK_PROMPT${OLD_PROMPT:10:-1}$VIM_PROMPT"
+    zle reset-prompt
+}
+
+# Print command execution time on the second line.
+function zle-line-finish {
+    OLD_PROMPT=${PS1:0:-4}
+    CLOCK_PROMPT="%F{cyan}$(date +"%H:%M:%S")%f├─> "
+    PS1="$OLD_PROMPT$CLOCK_PROMPT"
+    zle reset-prompt
+}
+
+# Update vi mode indicator when mode changes.
+function zle-keymap-select {
+    OLD_PROMPT=${PS1:0:-4}
+    if [ "$KEYMAP" = "vicmd" ]; then
+        VIM_PROMPT="N├> "
+    elif [ "$KEYMAP" = "main" ]; then
+        VIM_PROMPT="i├> "
+    else
+        VIM_PROMPT="?├> "
+    fi
+    PS1="$OLD_PROMPT$VIM_PROMPT"
+    zle reset-prompt
+}
+
+# Register widgets.
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+
+
+# prompt customization
+# http://www.pedaldrivenprogramming.com/2018/09/customize-grml-zsh-config/
+
+autoload -U colors && colors
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%{${fg[cyan]}%}(git)-[%{${fg[blue]}%}%b%{${fg[yellow]}%}%m%u%c%{${fg[cyan]}%}]%{$reset_color%}"
+
+# Detect and report if in python virtual environment
+function virtual_env_prompt () {
+    if [ -z $VIRTUAL_ENV ]; then
+        REPLY=""
+    else
+        REPLY="%F{green}(VENV:%F{magenta}${VIRTUAL_ENV+${VIRTUAL_ENV:t}}%F{green})%f"
+    fi
+}
+
+grml_theme_add_token virtual-env -f virtual_env_prompt
+grml_theme_add_token vi_mode "[i] "
+grml_theme_add_token left-arrow-upper-part '┌─00:00:00┤ '
+grml_theme_add_token left-arrow-lower-part '└┤i├> '
+
+zstyle ':prompt:grml:left:setup' items left-arrow-upper-part rc user at host change-root path vcs virtual-env newline left-arrow-lower-part

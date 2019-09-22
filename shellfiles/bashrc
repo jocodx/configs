@@ -6,5 +6,5 @@
 [[ $- != *i* ]] && return
 
 source ~/.aliases
-
+EDITOR=vim
 PS1='[\u@\h \W]\$ '
